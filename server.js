@@ -83,7 +83,7 @@ function serveImage(filename, req, res){
 
 function uploadImage(req, res){
 	var body = '';
-	req.on('error', funciton(){
+	req.on('error', function(){
 		res.statusCode = 500;
 		res.end();
 	});
@@ -106,7 +106,7 @@ function uploadImage(req, res){
 //Creates a server
 var server = http.createServer(function(req, res){
 	//At most, the url should have two parts -
-	//a resourcfe and a querystring seperated by a ?
+	//a resource and a querystring seperated by a ?
 	var urlParts = url.parse(req.url);
 
 	if(urlParts.query){
@@ -119,7 +119,7 @@ var server = http.createServer(function(req, res){
 	switch(urlParts.pathname){
 		case "/":
     case "/gallery":
-		if(req.metod == 'GET'){
+		if(req.method == 'GET'){
 		serveGallery(req, res);
 		}
 		else if(req.method == 'POST'){
