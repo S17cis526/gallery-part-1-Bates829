@@ -5,7 +5,7 @@ module.exports = {
   loadDir: loadDir
 };
 var fs = require('fs');
-var templates = {};
+var templates = {}
 
 /** @function loadDir
   * Loads a directory of templaces
@@ -14,8 +14,8 @@ var templates = {};
 function loadDir(directory){
   var dir = fs.readdirSync(directory);
   dir.forEach(function(file){
-    var stats = fs.statSync(directory, file);
     var path = directory + '/' + file;
+    var stats = fs.statSync(path);
     if(stats.isFile()){
       templates[file] = fs.readFileSync(path).toString();
     }
