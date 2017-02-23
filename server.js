@@ -8,6 +8,7 @@
 /* global variables */
 var multipart = require('./multipart');
 var template = require('./template');
+var staticFiles = require('./static');
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
@@ -18,6 +19,8 @@ var config = JSON.parse(fs.readFileSync('config.json'));
 var stylesheet = fs.readFileSync('public/gallery.css');
 var script = fs.readFileSync('public/gallery.js')
 
+
+staticFiles.loadDir('public');
 
 /*load templates*/
 template.loadDir('templates');
@@ -168,7 +171,13 @@ function handleRequest(req, res) {
       res.setHeader('Content-Type', 'text/javascript');
       res.end(script);
       break;
+    case '/jquery.js':
+      //Unfinished
+    break;
     default:
+      if(staticFiles.isCached(req.url)){
+        staticFiles.serveFile(req.url, req, res);
+      }
       serveImage(req.url, req, res);
   }
 }

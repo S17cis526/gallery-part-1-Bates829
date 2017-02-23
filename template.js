@@ -5,7 +5,7 @@ module.exports = {
   loadDir: loadDir
 };
 var fs = require('fs');
-var templates = {}
+var templates = {};
 
 /** @function loadDir
   * Loads a directory of templaces
