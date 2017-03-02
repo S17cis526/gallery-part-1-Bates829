@@ -34,7 +34,7 @@ function loadDir(directory){
         case 'gif':
         case 'png':
         case 'bmp':
-        case 'tiff'
+        case 'tiff':
         case 'svg':
           type = 'image/' + extension;
           break;
@@ -59,5 +59,5 @@ function isCached(path){
 function serveFile(path, req, res){
   res.statusCode = 200;
   res.setHeader('Content-Type', files[path].contentType);
-  res.end(file[path].data);
+  res.end(files[path].data);
 }
